@@ -132,6 +132,9 @@ public class Employee {
     }
 
     public static double sumSalariesByDepartment(Employee[] listOfEmployees, int departmentNumber) {
+        if (departmentNumber <= 0 || departmentNumber > 5) {
+            throw new IllegalArgumentException("Неверный номер отдела, допустимое значение от 1 до 5!");
+        }
         double allSalariesInDepartment = 0.0;
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber) {
@@ -142,6 +145,9 @@ public class Employee {
     }
 
     public static double calculateAverageSalariesInDepartment(Employee[] listOfEmployees, int departmentNumber) {
+        if (departmentNumber <= 0 || departmentNumber > 5) {
+            throw new IllegalArgumentException("Неверный номер отдела, допустимое значение от 1 до 5!");
+        }
         double allSalariesInDepartment = 0.0;
         int currentNumberOfEmployees = 0;
         for (Employee currentEmployee : listOfEmployees) {
@@ -155,6 +161,9 @@ public class Employee {
     }
 
     public static void indexSalaryInDepartment(Employee[] listOfEmploees, int departmentNumber, double indexationPercentage) {
+        if (departmentNumber <= 0 || departmentNumber > 5) {
+            throw new IllegalArgumentException("Неверный номер отдела, допустимое значение от 1 до 5!");
+        }
         for (Employee currentEmployee : listOfEmploees) {
             if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber) {
                 currentEmployee.setSalary(RoundingDouble.roundingDoubleToHundredths(currentEmployee.getSalary() + currentEmployee.getSalary() / 100 * indexationPercentage));
@@ -172,6 +181,9 @@ public class Employee {
     }
 
     public static void printEmployeesWithLoverSalary(Employee[] listOfEmployees, double salary) {
+        if (salary < 0) {
+            throw new IllegalArgumentException("Зарплата не может быть отрицательной!");
+        }
         System.out.printf("Сотрудники с зарплатой менее %s: \n", salary);
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null && currentEmployee.getSalary() < salary) {
@@ -181,6 +193,9 @@ public class Employee {
     }
 
     public static void printEmployeesWithHigherSalary(Employee[] listOfEmployees, double salary) {
+        if (salary < 0) {
+            throw new IllegalArgumentException("Зарплата не может быть отрицательной!");
+        }
         System.out.printf("Сотрудники с зарплатой более или равной %s: \n", salary);
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null && currentEmployee.getSalary() > salary) {
