@@ -27,7 +27,7 @@ public class Employee {
         }
     }
 
-    public static double salaryCostsPerMonth(Employee[] listOfEmployees) {
+    public static double sumSalaryCostsPerMonth(Employee[] listOfEmployees) {
         double allSalaries = 0.0;
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null) {
@@ -46,7 +46,7 @@ public class Employee {
             }
         }
         for (Employee currentEmployee : listOfEmployees) {
-            if (currentEmployee != null && currentEmployee.getSalary() < lowestSalary) {
+            if (currentEmployee != null && currentEmployee.getSalary() <= lowestSalary) {
                 lowestSalary = currentEmployee.getSalary();
                 lowestPaidEmployee = currentEmployee;
             }
@@ -84,6 +84,89 @@ public class Employee {
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null) {
                 System.out.println(currentEmployee.getName());
+            }
+        }
+    }
+
+    public static void indexSalary(Employee[] listOfEmploees, double indexationPercentage) {
+        for (Employee currentEmployee : listOfEmploees) {
+            if (currentEmployee != null) {
+                currentEmployee.setSalary(RoundingDouble.roundingDoubleToHundredths(currentEmployee.getSalary() + currentEmployee.getSalary() / 100 * indexationPercentage));
+            }
+        }
+    }
+
+    public static Employee findLowestPaidEmployeeInDepartment(Employee[] listOfEmployees, int departmentNumber) {
+        if (departmentNumber <= 0 || departmentNumber > 5) {
+            throw new IllegalArgumentException("Неверный номер отдела, допустимое значение от 1 до 5!");
+        }
+        double lowestSalaryInDepartment = 0;
+        Employee lowestPaidEmployeeInDepartment = null;
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber) {
+                lowestSalaryInDepartment = currentEmployee.getSalary();
+            }
+        }
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber && currentEmployee.getSalary() <= lowestSalaryInDepartment ) {
+                lowestSalaryInDepartment = currentEmployee.getSalary();
+                lowestPaidEmployeeInDepartment = currentEmployee;
+            }
+        }
+        return lowestPaidEmployeeInDepartment;
+    }
+
+    public static Employee findHighestPaidEmployeeInDepartment(Employee[] listOfEmployees, int departmentNumber) {
+        if (departmentNumber <= 0 || departmentNumber > 5) {
+            throw new IllegalArgumentException("Неверный номер отдела, допустимое значение от 1 до 5!");
+        }
+        double highestSalaryInDepartment = 0;
+        Employee highestPaidEmloyeeInDepartment = null;
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getSalary() > highestSalaryInDepartment && currentEmployee.getDepartment() == departmentNumber) {
+                highestSalaryInDepartment = currentEmployee.getSalary();
+                highestPaidEmloyeeInDepartment = currentEmployee;
+            }
+        }
+        return highestPaidEmloyeeInDepartment;
+    }
+
+    public static double sumSalariesByDepartment(Employee[] listOfEmployees, int departmentNumber) {
+        double allSalariesInDepartment = 0.0;
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber) {
+                allSalariesInDepartment += currentEmployee.getSalary();
+            }
+        }
+        return RoundingDouble.roundingDoubleToHundredths(allSalariesInDepartment);
+    }
+
+    public static double calculateAverageSalariesInDepartment(Employee[] listOfEmployees, int departmentNumber) {
+        double allSalariesInDepartment = 0.0;
+        int currentNumberOfEmployees = 0;
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber) {
+                allSalariesInDepartment += currentEmployee.getSalary();
+                currentNumberOfEmployees++;
+            }
+        }
+        double averageSalaries = allSalariesInDepartment / currentNumberOfEmployees;
+        return RoundingDouble.roundingDoubleToHundredths(averageSalaries);
+    }
+
+    public static void indexSalaryInDepartment(Employee[] listOfEmploees, int departmentNumber, double indexationPercentage) {
+        for (Employee currentEmployee : listOfEmploees) {
+            if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber) {
+                currentEmployee.setSalary(RoundingDouble.roundingDoubleToHundredths(currentEmployee.getSalary() + currentEmployee.getSalary() / 100 * indexationPercentage));
+            }
+        }
+    }
+
+    public static void printListOfEmployeesInDepartment(Employee[] listOfEmployees, int departmentNumber) {
+        System.out.printf("Данные сотрудников отдела №%s: \n", departmentNumber);
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber) {
+                System.out.printf("Работник id-%s, ФИО: %s,  зарплата - %.2f руб.\n", currentEmployee.getId(), currentEmployee.getName(), currentEmployee.getSalary());
             }
         }
     }
