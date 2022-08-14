@@ -19,7 +19,7 @@ public class Employee {
         count++;
     }
 
-    public static void getListOfEmployees(Employee[] listOfEmployees) {
+    public static void printListOfEmployees(Employee[] listOfEmployees) {
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null) {
                 System.out.println(currentEmployee);
@@ -79,7 +79,7 @@ public class Employee {
         return RoundingDouble.roundingDoubleToHundredths(averageSalaries);
     }
 
-    public static void getNamesOfEmployees(Employee[] listOfEmployees) {
+    public static void printNamesOfEmployees(Employee[] listOfEmployees) {
         System.out.println("Список имён сотрудников: ");
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null) {
@@ -166,6 +166,24 @@ public class Employee {
         System.out.printf("Данные сотрудников отдела №%s: \n", departmentNumber);
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null && currentEmployee.getDepartment() == departmentNumber) {
+                System.out.printf("Работник id-%s, ФИО: %s,  зарплата - %.2f руб.\n", currentEmployee.getId(), currentEmployee.getName(), currentEmployee.getSalary());
+            }
+        }
+    }
+
+    public static void printEmployeesWithLoverSalary(Employee[] listOfEmployees, double salary) {
+        System.out.printf("Сотрудники с зарплатой менее %s: \n", salary);
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getSalary() < salary) {
+                System.out.printf("Работник id-%s, ФИО: %s,  зарплата - %.2f руб.\n", currentEmployee.getId(), currentEmployee.getName(), currentEmployee.getSalary());
+            }
+        }
+    }
+
+    public static void printEmployeesWithHigherSalary(Employee[] listOfEmployees, double salary) {
+        System.out.printf("Сотрудники с зарплатой более или равной %s: \n", salary);
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getSalary() > salary) {
                 System.out.printf("Работник id-%s, ФИО: %s,  зарплата - %.2f руб.\n", currentEmployee.getId(), currentEmployee.getName(), currentEmployee.getSalary());
             }
         }

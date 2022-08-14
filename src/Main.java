@@ -12,17 +12,17 @@ public class Main {
         listOfEmployees[2] = semenSemenov;
         listOfEmployees[3] = denisDenisov;
 
-        Employee.getListOfEmployees(listOfEmployees);
+        Employee.printListOfEmployees(listOfEmployees);
         System.out.println(Employee.sumSalaryCostsPerMonth(listOfEmployees));
 
         System.out.println("Самый низкооплачиваемый работник: " + Employee.findLowestPaidEmployee(listOfEmployees).toString());
         System.out.println("Самый высокооплачиваемый работник: " + Employee.findHighestPaidEmployee(listOfEmployees).toString());
         System.out.println("Средняя зарплата всех работников: " + Employee.calculateAverageSalaries(listOfEmployees));
 
-        Employee.getNamesOfEmployees(listOfEmployees);
+        Employee.printNamesOfEmployees(listOfEmployees);
 
         Employee.indexSalary(listOfEmployees, 11);
-        Employee.getListOfEmployees(listOfEmployees);
+        Employee.printListOfEmployees(listOfEmployees);
 
         System.out.println("Самый низкооплачиваемый работник в отделе: " + Employee.findLowestPaidEmployeeInDepartment(listOfEmployees, 2));
         System.out.println("Самый высокооплачиваемый работник в отделе: " + Employee.findHighestPaidEmployeeInDepartment(listOfEmployees, 2));
@@ -30,6 +30,9 @@ public class Main {
         System.out.println(Employee.calculateAverageSalariesInDepartment(listOfEmployees, 2));
         Employee.indexSalaryInDepartment(listOfEmployees, 2, 3.3);
         Employee.printListOfEmployeesInDepartment(listOfEmployees, 2);
+
+        Employee.printEmployeesWithLoverSalary(listOfEmployees, 75000);
+        Employee.printEmployeesWithHigherSalary(listOfEmployees, 75000);
 
 
     }
