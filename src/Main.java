@@ -14,6 +14,9 @@ public class Main {
         System.out.println(Employee.salaryCostsPerMonth(listOfEmployees));
 
         System.out.println("Самый низкооплачиваемый работник: " + Employee.findLowestPaidEmployee(listOfEmployees).toString());
+        System.out.println("Самый высокооплачиваемый работник: " + Employee.findHighestPaidEmployee(listOfEmployees).toString());
+        System.out.println("Средняя зарплата всех работников: " + Employee.calculateAverageSalaries(listOfEmployees));
 
+        Employee.getNamesOfEmployees(listOfEmployees);
     }
 }

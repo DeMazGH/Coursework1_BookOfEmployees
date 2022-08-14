@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class DoubleRounding {
+public class RoundingDouble {
 
     public static double roundingDoubleToHundredths(double doubleNumber) {
         BigDecimal result = new BigDecimal(doubleNumber);

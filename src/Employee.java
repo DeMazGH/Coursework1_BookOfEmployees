@@ -6,6 +6,12 @@ public class Employee {
     private final int id;
 
     public Employee(String name, int department, double salary) {
+        if (salary < 0) {
+            throw new IllegalArgumentException("Зарплата не может быть отрицательной!");
+        }
+        if (department <= 0 || department > 5) {
+            throw new IllegalArgumentException("Неверный номер отдела, допустимое значение от 1 до 5!");
+        }
         this.name = name;
         this.department = department;
         this.salary = salary;
@@ -28,7 +34,7 @@ public class Employee {
                 allSalaries += currentEmployee.getSalary();
             }
         }
-        return DoubleRounding.roundingDoubleToHundredths(allSalaries);
+        return RoundingDouble.roundingDoubleToHundredths(allSalaries);
     }
 
     public static Employee findLowestPaidEmployee(Employee[] listOfEmployees) {
@@ -46,6 +52,40 @@ public class Employee {
             }
         }
         return lowestPaidEmployee;
+    }
+
+    public static Employee findHighestPaidEmployee(Employee[] listOfEmployees) {
+        double highestSalary = 0;
+        Employee highestPaidEmloyee = null;
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null && currentEmployee.getSalary() > highestSalary) {
+                highestSalary = currentEmployee.getSalary();
+                highestPaidEmloyee = currentEmployee;
+            }
+        }
+        return highestPaidEmloyee;
+    }
+
+    public static double calculateAverageSalaries(Employee[] listOfEmployees) {
+        double allSalaries = 0.0;
+        int currentNumberOfEmployees = 0;
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null) {
+                allSalaries += currentEmployee.getSalary();
+                currentNumberOfEmployees++;
+            }
+        }
+        double averageSalaries = allSalaries / currentNumberOfEmployees;
+        return RoundingDouble.roundingDoubleToHundredths(averageSalaries);
+    }
+
+    public static void getNamesOfEmployees(Employee[] listOfEmployees) {
+        System.out.println("Список имён сотрудников: ");
+        for (Employee currentEmployee : listOfEmployees) {
+            if (currentEmployee != null) {
+                System.out.println(currentEmployee.getName());
+            }
+        }
     }
 
     @Override
