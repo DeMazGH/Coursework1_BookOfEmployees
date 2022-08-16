@@ -17,7 +17,7 @@ public class Main {
         System.out.println("Самый низкооплачиваемый работник: " + employeeBook.findLowestPaidEmployee().toString());
         System.out.println("Самый высокооплачиваемый работник: " + employeeBook.findHighestPaidEmployee().toString());
         System.out.println("Средняя зарплата всех работников: " + employeeBook.calculateAverageSalaries());
-        employeeBook.printNamesOfEmployees();
+        employeeBook.printEmployeeNames();
         employeeBook.indexSalary(11);
         employeeBook.printListOfEmployees();
         System.out.println("Самый низкооплачиваемый работник в отделе: " + employeeBook.findLowestPaidEmployeeInDepartment(2));
@@ -38,5 +38,7 @@ public class Main {
         employeeBook.changeEmployeeSalary("Денисов Денис денисович", 99000.999);
         employeeBook.changeEmployeeDepartment("денисов Денис Денисович", 3);
         employeeBook.printListOfEmployees();
+        System.out.println();
+        employeeBook.printEmployeeNamesByDepartment();
     }
 }

@@ -60,11 +60,28 @@ public class EmployeeBook {
         }
     }
 
-    public void printNamesOfEmployees() {
+    public void printEmployeeNames() {
         System.out.println("Список имён сотрудников: ");
         for (Employee currentEmployee : listOfEmployees) {
             if (currentEmployee != null) {
                 System.out.println(currentEmployee.getName());
+            }
+        }
+    }
+
+    public void printEmployeeNamesByDepartment() {
+        System.out.println("Список имён сотрудников по отделам ");
+        for (int i = 1; i <= Employee.getNumberOfDepartments(); i++) {
+            System.out.println("Отдел № " + i);
+            int numberEmploeesInThisDeparnment = 0;
+            for (Employee currentEmployee : listOfEmployees) {
+                if (currentEmployee != null && currentEmployee.getDepartment() == i) {
+                    System.out.println(currentEmployee.getName());
+                    numberEmploeesInThisDeparnment++;
+                }
+            }
+            if (numberEmploeesInThisDeparnment == 0) {
+                System.out.println("В этом отделе в данный момент не числится сотрудников.");
             }
         }
     }

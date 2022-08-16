@@ -4,6 +4,7 @@ public class Employee {
     private double salary;
     static int count = 0;
     private final int id;
+    static int numberOfDepartments = 5;
 
     public Employee(String name, int department, double salary) {
         if (salary < 0) {
@@ -36,12 +37,12 @@ public class Employee {
         return salary;
     }
 
-    public static int getCount() {
-        return count;
-    }
-
     public int getId() {
         return id;
+    }
+
+    public static int getNumberOfDepartments() {
+        return numberOfDepartments;
     }
 
     public void setDepartment(int department) {
