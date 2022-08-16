@@ -29,8 +29,10 @@ public class Main {
         employeeBook.printEmployeesWithLoverSalary(75000);
         employeeBook.printEmployeesWithHigherSalary(75000);
         System.out.println();
-        employeeBook.deleteEmployee(2);
+        employeeBook.deleteEmployee("Петров петр Петрович");
         employeeBook.printListOfEmployees();
-
+        System.out.println();
+        employeeBook.deleteEmployee(0);
+        employeeBook.printListOfEmployees();
     }
 }
