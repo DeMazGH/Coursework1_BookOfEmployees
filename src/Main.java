@@ -34,5 +34,9 @@ public class Main {
         System.out.println();
         employeeBook.deleteEmployee(0);
         employeeBook.printListOfEmployees();
+        System.out.println();
+        employeeBook.changeEmployeeSalary("Денисов Денис денисович", 99000.999);
+        employeeBook.changeEmployeeDepartment("денисов Денис Денисович", 3);
+        employeeBook.printListOfEmployees();
     }
 }

@@ -228,4 +228,32 @@ public class EmployeeBook {
         }
         return highestPaidEmloyeeInDepartment;
     }
+
+    public void changeEmployeeSalary(String name, double newSalary) {
+        int counter = 0;
+        while (counter < listOfEmployees.length) {
+            if (listOfEmployees[counter] != null && listOfEmployees[counter].getName().equalsIgnoreCase(name)) {
+                listOfEmployees[counter].setSalary(RoundingDouble.roundingDoubleToHundredths(newSalary));
+                break;
+            }
+            counter++;
+        }
+        if (counter == listOfEmployees.length) {
+            throw new RuntimeException("Сотрудник не найден, проверьте правильность ввода данных!");
+        }
+    }
+
+    public void changeEmployeeDepartment(String name, int newDepartmentNumber) {
+        int counter = 0;
+        while (counter < listOfEmployees.length) {
+            if (listOfEmployees[counter] != null && listOfEmployees[counter].getName().equalsIgnoreCase(name)) {
+                listOfEmployees[counter].setDepartment(newDepartmentNumber);
+                break;
+            }
+            counter++;
+        }
+        if (counter == listOfEmployees.length) {
+            throw new RuntimeException("Сотрудник не найден, проверьте правильность ввода данных!");
+        }
+    }
 }
